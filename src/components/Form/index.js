@@ -1,40 +1,56 @@
+/**
+ * Import CSS Module Hero/JUMBOTRON.
+ * Disimpan di object styles.
+ */
 import React, { useState } from "react";
 import data from "../../utils/constants/provinces";
 import logo from "./img.png";
 import styles from "./index.module.css";
 
 function Form(props) {
+    /**
+   * Menggunakan styles yang sudah diimport.
+   * Memanggilnya menggunakan expression.
+   */
   const { provinces, setProvinces } = props;
-
   const [provinsi, setProvinsi] = useState();
   const [status, setStatus] = useState();
   const [jumlah, setJumlah] = useState();
 
+   /**
+    * Membuat state: error tittle, date, select, input
+    */
   const [isProvinsiEmpty, setIsProvinsiEmpty] = useState(false);
   const [isStatusEmpty, setIsStatusEmpty] = useState(false);
   const [isJumlahEmpty, setIsJumlahEmpty] = useState(false);
 
+  /**
+   * membuat handle submit 
+   */
   const handleSubmit = (e) => {
+    /**
+     * Mencegah perilaku default form.
+     * Mencegah form direfresh ketika disubmit.
+     */
     e.preventDefault();
-
+    /**
+     * if data undefined / jika data kosong
+     */
     if (!provinsi) {
       setIsProvinsiEmpty(true);
       return;
     }
-
     if (!status) {
       setIsProvinsiEmpty(false);
       setIsStatusEmpty(true);
       return;
     }
-
     if (!jumlah) {
       setIsProvinsiEmpty(false);
       setIsStatusEmpty(false);
       setIsJumlahEmpty(true);
       return;
     }
-
     const province = {
         kota: provinsi,
         [status]: jumlah,
@@ -46,8 +62,8 @@ function Form(props) {
       { ...prov, [status] : jumlah } : prov
     );
 
+    // SOLVED: HOW TO ADD MOVIE TO MOVIES 
     console.log(data);
-
     setProvinces(data);
 
     setIsProvinsiEmpty(false);
