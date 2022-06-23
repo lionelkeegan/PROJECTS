@@ -1,0 +1,26 @@
+.container {
+  padding: 0 2rem;
+  color: #fff;
+}
+
+.global {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.global__title h1 {
+  text-align: center;
+  color: #06D6A0;
+}
+.global__title p {
+  color: #118AB2;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .global__body {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
