@@ -1,8 +1,8 @@
+import axios from 'axios';
 import { useEffect, useState } from "react";
 import Global from "../../components/Global";
 import Hero from "../../components/Hero";
 import Summary from "../../components/Summary";
-import axios from 'axios';
 
 
 function CovidIndonesia(){
@@ -17,6 +17,7 @@ function CovidIndonesia(){
     },[])
     
     async function getCovidsIndonesia(){
+        //response for covids data
         const response = await axios(url)
 
         let covids = [
@@ -30,7 +31,7 @@ function CovidIndonesia(){
     return(
         <>
             <Hero />
-            <Global title="Indonesia" tagline="Data Covid Berdasarkan Indonesia" covids={covids}  />
+            <Global title="Indonesia" tag="Data Covid Berdasarkan Indonesia" covids={covids}  />
             <Summary src="https://covid19.mathdro.id/api/countries/indonesia/og" title="Indonesia" />
         </>
     )

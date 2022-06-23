@@ -1,12 +1,21 @@
+/**
+ * Import CSS Module Hero/JUMBOTRON.
+ * Disimpan di object styles.
+ */
 import StyledCards from "./Global.styled.js";
 import Card from '../Card/index';
 
 
 
 function Cards(props){
-    const {covids, title, tagline} = props;
-    const stats = ["Confirmed","Recovered","Deaths"]
+    /**
+   * Menggunakan styles yang sudah diimport.
+   * Memanggilnya menggunakan expression.
+   */
+    const {covids, title, tag} = props;
+    const status = ["Confirmed","Recovered","Deaths"]
     let id = '';
+
 
     // console.log(covids);
 
@@ -15,12 +24,12 @@ function Cards(props){
             <div>
                 <section>
                     <h2>{title}</h2>
-                    <p>{tagline}</p>
+                    <p>{tag}</p>
                     <div className="card__container">
                         {
                             covids.map((covid,index) => {
                                 id++
-                                return <Card key={id}  covid={covid} style={stats[index]}/>
+                                return <Card key={id}  covid={covid} style={status[index]}/>
                             })
                         }
                     </div>
