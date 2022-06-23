@@ -1,32 +1,42 @@
+import axios from "axios";
+import { useEffect } from "react";
 import { useState } from "react";
-import Footer from "../components/Footer";
-import Form from "../components/Form";
-import Global from "../components/Global";
+import Global from "../components/Global/";
 import Hero from "../components/Hero";
-import Navbar from "../components/Navbar";
-import Provinsi from "../components/Provinsi";
-import data from "../utils/constants/provinces";
+import Summary from "../components/Summary";
 
-function Main() {
-  const [provinces, setProvinces] = useState(data.provinces);
-  return (
-    <main>
-      <Hero />
-      <Global />
-      <Provinsi provinces={provinces} setProvinces={setProvinces} />
-      <Form provinces={provinces} setProvinces={setProvinces} />
-    </main>
-  );
-}
 
 function Home() {
+   //url
+    const url = `https://covid19.mathdro.id/api`;
+    
+    const [covids, setCovids] = useState([])
+    //membuat state covid
+
+    useEffect(()=>{
+        getCovidsGlobal();
+    },[])
+    
+    async function getCovidsGlobal(){
+        const response = await axios(url)
+
+        
+        let covids = [
+          response.data.confirmed,
+          response.data.recovered,
+          response.data.deaths,
+        ]
+
+        setCovids(covids)
+    }
+
   return (
-    <>
-      <Navbar />
-      <Main />
-      <Footer />
-    </>
-  );
+      <div>
+        <Hero />
+        <Global title="Global" tagline="Data Covid Berdasarkan Global" covids={covids}/>
+        <Summary src="https://covid19.mathdro.id/api/og" title="Global" />
+      </div>
+  )
 }
 
 export default Home;

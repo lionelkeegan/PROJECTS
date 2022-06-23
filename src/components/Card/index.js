@@ -1,19 +1,20 @@
-/**
- * import css module
- */
-import React from "react";
-import styles from "./index.module.css";
+import StyledCard from './Card.styled';
 
-function Card(props) {
-    // destructing props
-  const { status, total,} = props;
+function Card(props){
+    //destruct object
+    const {covid,style} = props;
 
-  return (
-    <div className={styles.card}>
-        <h4 className={styles.status}>{status}</h4>
-        <h2>{total.toLocaleString()}</h2>
-    </div>
-  );
+    return(
+        <StyledCard>
+            <div className="card">
+                <div className="card__detail">
+                    <h2 className="title">{[style]}</h2>
+                    <h1 className={[style]}>{covid.value}</h1>
+                    <a href={covid.detail} className="card__detail">More Info</a>
+                </div>
+            </div>
+        </StyledCard>
+    )
 }
 
 export default Card;

@@ -1,36 +1,33 @@
-/**
- * Import CSS Module movies.
- * Disimpan di object styles.
- * import data global indonesia
- */
-import React from "react";
-import data from "../../utils/constants/indonesia";
-import Card from "../Card";
-import styles from "./index.module.css";
+import StyledCards from "./Global.styled.js";
+import Card from '../Card/index';
 
-function Global() {
-    /**
-   * state movies
-   */
-  return (
-    <div className={styles.container}>
-      <div className={styles.global}>
-        <div className={styles.global__title}>
-          <h1 className={styles.title}>Indonesia</h1>
-          <p className={styles.subtitle}>Data Covid Berdasarkan Global</p>
-        </div>
-        <div className={styles.global__body}>
-          {data.indonesia.map((data) => (
-            <Card
-              key={data.status}
-              status={data.status}
-              total={data.total}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+
+
+function Cards(props){
+    const {covids, title, tagline} = props;
+    const stats = ["Confirmed","Recovered","Deaths"]
+    let id = '';
+
+    // console.log(covids);
+
+    return(
+        <StyledCards>
+            <div>
+                <section>
+                    <h2>{title}</h2>
+                    <p>{tagline}</p>
+                    <div className="card__container">
+                        {
+                            covids.map((covid,index) => {
+                                id++
+                                return <Card key={id}  covid={covid} style={stats[index]}/>
+                            })
+                        }
+                    </div>
+                </section>
+            </div>
+        </StyledCards>
+    )
 }
 
-export default Global;
+export default Cards;
