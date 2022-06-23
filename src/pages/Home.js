@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Global from "../components/Global/";
 import Hero from "../components/Hero";
 import Summary from "../components/Summary";
@@ -18,9 +17,9 @@ function Home() {
     },[])
     
     async function getCovidsGlobal(){
+      //response for covids data
         const response = await axios(url)
 
-        
         let covids = [
           response.data.confirmed,
           response.data.recovered,
@@ -33,7 +32,7 @@ function Home() {
   return (
       <div>
         <Hero />
-        <Global title="Global" tagline="Data Covid Berdasarkan Global" covids={covids}/>
+        <Global title="Global" tag="Data Covid Berdasarkan Global" covids={covids}/>
         <Summary src="https://covid19.mathdro.id/api/og" title="Global" />
       </div>
   )

@@ -1,3 +1,6 @@
+/**
+ * import styled
+ */
 import StyledCard from './Card.styled';
 
 function Card(props){
@@ -5,6 +8,7 @@ function Card(props){
     const {covid,style} = props;
 
     return(
+        //send import styled here....
         <StyledCard>
             <div className="card">
                 <div className="card__detail">

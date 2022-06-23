@@ -11,10 +11,10 @@ const StyledCard = styled.div`
 }
 
 .title{
-    color: #073B4C;
     padding-top: 4rem;
     font-weight: 500;
     font-size: 39px;
+    color: #073B4C;
 }
 
 .card__detail{
@@ -25,21 +25,21 @@ const StyledCard = styled.div`
 }
 
 .Confirmed{
-    color: #06D6A0;
     font-weight: 700;
     font-size: 50px;
+    color: #06D6A0;
 }
 
 .Recovered{
-    color:#118AB2;
     font-weight: 700;
     font-size: 50px;
+    color:#118AB2;
 }
 
 .Deaths{
-    color: #EF476F;
     font-weight: 700;
     font-size: 50px;
+    color: #EF476F;
 }
 
 /* medium screen*/
